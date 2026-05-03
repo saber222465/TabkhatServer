@@ -145,6 +145,14 @@ app.get('/stats', (req, res) => {
   });
 });
 
+// ← أضف هنا
+app.get('/meals', (req, res) => {
+  res.json({
+    total: mealPool.length,
+    meals: mealPool.map(m => ({ name: m.name, emoji: m.emoji, cuisine: m.cuisine }))
+  });
+});
+
 app.get('/', (req, res) => res.send('🍽️ طبخة اليوم Server يشتغل ✅'));
 
 const PORT = process.env.PORT || 3000;
